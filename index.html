@@ -1,43 +1,599 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Página com imagem e botão</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #1c2331; /* Fundo azul escuro */
-    }
-    img {
-      max-width: 100%;
-      max-height: 80vh;
-    }
-    .button-container {
-      margin-top: 20px;
-    }
-    .confirm-button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Aniversário - Hot Wheels Lorenzo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One:wght@400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-K8VhPg9bbLpqfk02yZmmuEZbU3yQo2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* .racing-track {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255,255,255,0.1) 20px,
+                    rgba(255,255,255,0.1) 25px,
+                    transparent 25px,
+                    transparent 45px,
+                    rgba(255,255,255,0.1) 45px,
+                    rgba(255,255,255,0.1) 50px
+                );
+            pointer-events: none;
+            z-index: 1;
+            animation: track-move 10s linear infinite;
+        } */
+
+        @keyframes track-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 70px 0; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .invite-card {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BOllv8IFqSY8hp12cSn16FCJubcg4j.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            text-align: center;
+            margin-bottom: 30px;
+            border: 4px solid #1e88e5;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .invite-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .invite-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .invite-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            animation: shine 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .car-logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+            animation: car-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes car-bounce {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(10px); }
+        }
+
+        .title {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 3rem;
+            color: #ffffff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fff3cd;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .birthday-boy {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #1f2937;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .birthday-boy h3 {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 2rem;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .age-badge {
+            display: inline-block;
+            background: #1e88e5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .event-details {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            color: #1f2937;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .detail-icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .map-link {
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .map-link:hover {
+            text-decoration: underline;
+        }
+
+        .gift-suggestions {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            color: #1f2937;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .gift-suggestions h3 {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 1.8rem;
+            color: #ff6b35;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .gift-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .gift-icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .form-container {
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border: 4px solid #ff6b35;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-title {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 2.5rem;
+            color: #ff6b35;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #ffffff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(145deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 15px rgba(255, 107, 53, 0.3);
+            font-family: 'Racing Sans One', cursive;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #ff6b35;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .invite-card {
+                padding: 25px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .form-title {
+                font-size: 2rem;
+            }
+        }
+
+        .car-decoration {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: drive 4s ease-in-out infinite;
+        }
+
+        .car-1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .car-2 {
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .car-3 {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes drive {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(5deg); }
+        }
+
+        .checkered-flag {
+            display: inline-block;
+            margin: 0 10px;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+    </style>
 </head>
 <body>
-  <img src="https://i.pinimg.com/750x/27/4a/93/274a931976d8cf5112f176dba9317945.jpg" alt="Imagem">
-  <div class="button-container">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdkMDOwrH7NFBiIpuo0Ihr6C5eP5Y64k9U7WDcP-1Sq9WDnvA/viewform?usp=sf_link" class="confirm-button">Confirmar Presença</a>
-  </div>
+    <div class="racing-track"></div>
+    
+    <div class="car-decoration car-1">🏎️</div>
+    <div class="car-decoration car-2">🚗</div>
+    <div class="car-decoration car-3">🏁</div>
+
+    <div class="container">
+        <div class="invite-card">
+            <div class="car-logo">🏎️</div>
+            <h1 class="title">Foi dada a largada para o meu aniversário</h1>
+            <p class="subtitle">Acelere para a diversão!</p>
+            
+            <div class="birthday-boy">
+                <h3>🏁 Lorenzo está fazendo</h3>
+                <div class="age-badge">5 ANOS!</div>
+            </div>
+            
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <span>Data: 26 de Julho</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🕐</span>
+                    <span>Horário: 18:00 Horas</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span>Local: <a href="https://www.google.com/maps/place/IMP%C3%89RIO+KIDS/@-1.3528863,-48.4531007,17z/data=!4m6!3m5!1s0x92a461bbe2657cdb:0xa91aa38113120095!8m2!3d-1.3528853!4d-48.4529235!16s%2Fg%2F11vt7g62hb?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">Império Kids</a></span>
+                </div>
+            </div>
+
+            <div class="gift-suggestions">
+                <h3><span class="checkered-flag">🏁</span> Sugestões de Presente <span class="checkered-flag">🏁</span></h3>
+                <div class="gift-item">
+                    <span class="gift-icon">🧸</span>
+                    <span><strong>Brinquedos:</strong> Fique à vontade, Lorenzo gosta de tudo!</span>
+                </div>
+                <div class="gift-item">
+                    <span class="gift-icon">👕</span>
+                    <span><strong>Roupa:</strong> Tamanho 6 anos</span>
+                </div>
+                <div class="gift-item">
+                    <span class="gift-icon">👟</span>
+                    <span><strong>Sapato:</strong> Número 27</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2 class="form-title">🏎️ Confirmação de Presença 🏁</h2>
+            
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label class="form-label" for="nome">Qual é o seu nome? *</label>
+                    <input type="text" id="nome" name="nome" class="form-input" required placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="acompanhantes-adultos">Você levará acompanhante (ADULTO)? *</label>
+                    <select id="acompanhantes-adultos" name="acompanhantes-adultos" class="form-select" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="0">NÃO LEVAREI ACOMPANHANTE ADULTO</option>
+                        <option value="1">1 acompanhante adulto</option>
+                        <option value="2">2 acompanhantes adultos</option>
+                        <option value="3">3 acompanhantes adultos</option>
+                        <option value="4">4 acompanhantes adultos</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="acompanhantes-criancas">Você levará acompanhante (CRIANÇA)? *</label>
+                    <select id="acompanhantes-criancas" name="acompanhantes-criancas" class="form-select" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="0">NÃO LEVAREI ACOMPANHANTE CRIANÇA</option>
+                        <option value="1">1 acompanhante criança</option>
+                        <option value="2">2 acompanhantes crianças</option>
+                        <option value="3">3 acompanhantes crianças</option>
+                        <option value="4">4 acompanhantes crianças</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    🏎️ Acelerar Confirmação! 🏁
+                </button>
+
+                <div class="loading" id="loading">
+                    Acelerando confirmação... 🏎️💨
+                </div>
+
+                <div class="success-message" id="success">
+                    ✅ Presença confirmada! Nos vemos na pista do Lorenzo! 🏎️🏁
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Configuração do Google Apps Script
+        // IMPORTANTE: Substitua pela URL do seu Google Apps Script
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzzf36G-IkwxiGmCKBI_30CbDWIaSlAof0UXOSccgsWEKFwxuQ-3wQhV0hIm1iT81u--g/exec';
+
+        document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const success = document.getElementById('success');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            // Mostrar loading
+            loading.style.display = 'block';
+            success.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Acelerando...';
+            
+            // Coletar dados do formulário
+            const formData = new FormData(this);
+            const data = {
+                nome: formData.get('nome'),
+                acompanhantesAdultos: formData.get('acompanhantes-adultos'),
+                acompanhantesCriancas: formData.get('acompanhantes-criancas'),
+                timestamp: new Date().toLocaleString('pt-BR'),
+                evento: 'Festa Hot Wheels - Lorenzo 5 anos'
+            };
+            
+            try {
+                // Enviar para Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Mostrar sucesso
+                loading.style.display = 'none';
+                success.style.display = 'block';
+                this.reset();
+                
+                // Scroll para a mensagem de sucesso
+                success.scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Erro ao enviar:', error);
+                alert('Erro ao enviar confirmação. Tente novamente.');
+                loading.style.display = 'none';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '🏎️ Acelerar Confirmação! 🏁';
+            }
+        });
+
+        // Animação de entrada
+        window.addEventListener('load', function() {
+            const card = document.querySelector('.invite-card');
+            const form = document.querySelector('.form-container');
+            
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            form.style.opacity = '0';
+            form.style.transform = 'translateY(50px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 200);
+            
+            setTimeout(() => {
+                form.style.transition = 'all 0.8s ease';
+                form.style.opacity = '1';
+                form.style.transform = 'translateY(0)';
+            }, 600);
+        });
+
+        // Efeito sonoro de carro (opcional)
+        function playCarSound() {
+            // Você pode adicionar um arquivo de áudio aqui
+            console.log('Vroom vroom! 🏎️');
+        }
+
+        // Adicionar efeito ao clicar no botão
+        document.querySelector('.submit-btn').addEventListener('click', playCarSound);
+    </script>
 </body>
 </html>
